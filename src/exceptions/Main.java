@@ -62,26 +62,23 @@ public class Main {
 
                 boolean success = false;
 
-                // coba login ke semua user
                 for (User u : listOfUser) {
                     if (u.login(username, password)) {
                         System.out.println(u.greeting());
                         success = true;
-                        return; // keluar dari method setelah login sukses
+                        return;
                     }
                 }
 
-                // jika tidak ada user cocok
                 attempts++;
                 System.out.println("Username atau password salah! Sisa percobaan: " + (3 - attempts));
 
             } catch (ExcessiveFailedLoginException ex) {
                 System.out.println(ex.getMessage());
-                return; // keluar dari login
+                return;
             }
         }
 
-        // jika sudah 3 kali gagal dan tidak dilempar exception
         System.out.println("Anda telah melewati batas percobaan login!");
     }
 
